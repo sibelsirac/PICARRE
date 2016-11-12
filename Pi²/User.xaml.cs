@@ -30,7 +30,7 @@ namespace Pi_
 
         public User()
         {
-            MV_Pilot pilote = ApplicationState.GetValue<MV_Pilot>("User");
+            MV_Pilot pilote = ApplicationState.GetValue<MV_Pilot>("User"); 
             string tostring = pilote.ToString();
             Name2 = tostring;
             DataContext = this;

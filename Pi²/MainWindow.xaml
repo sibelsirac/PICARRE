@@ -12,10 +12,10 @@
             <ColumnDefinition Width="27*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="button" Content="Add Plane" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click"/>
-        <Button x:Name="button2" Content="Add Pilot" HorizontalAlignment="Left" Margin="200,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click2"/>
-        <Button x:Name="button3" Content="Add Hangar" HorizontalAlignment="Left" Margin="350,115,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click3"/>
-        <Button x:Name="button4" Content="Login" HorizontalAlignment="Left" Margin="350,30,20,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click4"/>
+        <Button x:Name="button" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Plane" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click"/>
+        <Button x:Name="button2" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Pilot" HorizontalAlignment="Left" Margin="200,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click2"/>
+        <Button x:Name="button3" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Hangar" HorizontalAlignment="Left" Margin="350,115,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click3"/>
+        <Button x:Name="button4" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Login" HorizontalAlignment="Left" Margin="350,30,20,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click4"/>
 
     </Grid>
 </Window>

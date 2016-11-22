@@ -12,7 +12,7 @@
         <ColumnDefinition Width="27*"/>
     </Grid.ColumnDefinitions>
 
-    <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="450,30,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
+        <Button x:Name="button" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add" HorizontalAlignment="Left" Margin="450,30,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
     <TextBox x:Name="boxName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="35,30,0,0"/>
     <TextBox x:Name="boxPlane" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="200,30,0,0"/>
     <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="60,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>

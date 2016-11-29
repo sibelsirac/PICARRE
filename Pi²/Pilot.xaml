@@ -5,22 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pi_"
         mc:Ignorable="d"
-        Title="Pilot" Height="300" Width="600">
+        Title="Pilot" Height="450" Width="720" Margin="0,-100,0,0">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"/>
-            <ColumnDefinition Width="27*"/>
-        </Grid.ColumnDefinitions>
+        <Image Source="Properties/fond.jpeg" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <Button x:Name="button" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add" HorizontalAlignment="Left" Margin="450,30,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
-        <TextBox x:Name="boxName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="35,30,0,0"/>
-        <TextBox x:Name="boxFName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="200,30,0,0"/>
-        <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="60,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textFName" HorizontalAlignment="Left" Margin="225,10,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
-        <TextBox x:Name="boxLarg" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="35,95,0,0"/>
-        <TextBox x:Name="boxLong" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="200,95,0,0"/>
-        <TextBlock x:Name="textBirth" HorizontalAlignment="Left" Margin="60,75,0,0" TextWrapping="Wrap" Text="Plane" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textLicense" HorizontalAlignment="Left" Margin="225,75,0,0" TextWrapping="Wrap" Text="Date License" VerticalAlignment="Top"/>
-
+        <Button x:Name="button" Foreground ="White" Background="Transparent" Content="Add" HorizontalAlignment="Left" Margin="380,110,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
+        <TextBox x:Name="boxName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="100,75,0,0"/>
+        <TextBox x:Name="boxFName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="250,75,0,0"/>
+        <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="135,55,0,0" TextWrapping="Wrap" Text="Name" Foreground="White" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textAvion" HorizontalAlignment="Left" Margin="270,55,0,0" TextWrapping="Wrap" Text="First Name" Foreground="White" VerticalAlignment="Top"/>
+        <TextBox x:Name="boxLarg" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="100,145,0,0"/>
+        <TextBox x:Name="boxLong" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="250,145,0,0"/>
+        <TextBlock x:Name="textLargeur" HorizontalAlignment="Left" Margin="135,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Plane" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textLongueur" HorizontalAlignment="Left" Margin="268,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Date License" VerticalAlignment="Top"/>
     </Grid>
 </Window>

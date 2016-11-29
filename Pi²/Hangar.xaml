@@ -5,23 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pi_"
         mc:Ignorable="d"
-      Title="HangarForm" Height="200" Width="550" Margin="0,-100,0,0">
+      Title="HangarForm" Height="450" Width="720" Margin="0,-100,0,0">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"/>
-            <ColumnDefinition Width="27*"/>
-        </Grid.ColumnDefinitions>
+        <Image Source="Properties/fond.jpeg" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <Button x:Name="button" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add" HorizontalAlignment="Left" Margin="450,30,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
-        <TextBox x:Name="boxName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="35,30,0,0"/>
-        <TextBox x:Name="boxCity" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="200,30,0,0"/>
-        <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="60,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textCity" HorizontalAlignment="Left" Margin="225,10,0,0" TextWrapping="Wrap" Text="City" VerticalAlignment="Top"/>
-        <TextBox x:Name="boxlength" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="35,95,0,0"/>
-        <TextBlock x:Name="textlength" HorizontalAlignment="Left" Margin="60,75,0,0" TextWrapping="Wrap" Text="length" VerticalAlignment="Top"/>
-        <TextBox x:Name="boxwidth" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="200,95,0,0"/>
-        <TextBlock x:Name="textwidth" HorizontalAlignment="Left" Margin="225,75,0,0" TextWrapping="Wrap" Text="Width" VerticalAlignment="Top"/>
+        <Button x:Name="button" Foreground ="White" Background="Transparent" Content="Add" HorizontalAlignment="Left" Margin="380,110,0,0" VerticalAlignment="Top" Height="25" Width="75" Click="button_Click"/>
+        <TextBox x:Name="boxName" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="100,75,0,0"/>
+        <TextBox x:Name="boxCity" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="250,75,0,0"/>
+        <TextBlock x:Name="textName" HorizontalAlignment="Left" Margin="135,55,0,0" TextWrapping="Wrap" Text="Name" Foreground="White" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textAvion" HorizontalAlignment="Left" Margin="285,55,0,0" TextWrapping="Wrap" Text="City" Foreground="White" VerticalAlignment="Top"/>
+        <TextBox x:Name="boxWidth" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="100,145,0,0"/>
+        <TextBox x:Name="boxLength" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="250,145,0,0"/>
+        <TextBlock x:Name="textLargeur" HorizontalAlignment="Left" Margin="135,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Width" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textLongueur" HorizontalAlignment="Left" Margin="285,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Length" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

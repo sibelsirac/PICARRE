@@ -5,17 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pi_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="550" Margin="0,-100,0,0">
+        Title="MainWindow" Height="450" Width="720" Margin="0,-100,0,0">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"/>
-            <ColumnDefinition Width="27*"/>
-        </Grid.ColumnDefinitions>
+        <Image Source="Properties/Menu.jpeg" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <Button x:Name="button" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Plane" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click"/>
-        <Button x:Name="button2" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Pilot" HorizontalAlignment="Left" Margin="200,30,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click2"/>
-        <Button x:Name="button3" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Add Hangar" HorizontalAlignment="Left" Margin="350,115,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click3"/>
-        <Button x:Name="button4" Foreground ="White" Background="Black" BorderBrush ="Blue" Content="Login" HorizontalAlignment="Left" Margin="350,30,20,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click4"/>
+        <Button x:Name="button" Foreground ="White" Background="Transparent" Content="Add Plane" HorizontalAlignment="Left" Margin="70,100,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click"/>
+        <Button x:Name="button2" Foreground ="White" Background="Transparent" Content="Add Pilot" HorizontalAlignment="Left" Margin="70,150,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click2"/>
+        <Button x:Name="button3" Foreground ="White" Background="Transparent" Content="Add Hangar" HorizontalAlignment="Left" Margin="70,200,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click3"/>
+        <Button x:Name="button4" Foreground ="White" Background="Transparent" Content="Login" HorizontalAlignment="Left" Margin="70,250,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click4"/>
 
     </Grid>
 </Window>

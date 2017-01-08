@@ -6,7 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Pi_
-{//lien entre visual et la base de donnée
+
+{
+    /// <summary>
+    /// //sibel
+    /// </summary>
+    //lien entre visual et la base de donnée
     class M_BDD
     {
         MySqlConnection connection;

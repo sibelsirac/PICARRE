@@ -31,8 +31,9 @@ namespace Pi_
         private void button_Click(object sender, RoutedEventArgs e)
         {
             string mot = pass.Password;//recuperation du mot de passe
-             
-            int password = int.Parse(mot); //parse du mot de passe
+       //le mot de passe est un entier lié à l'id de l'avion
+                int password = int.Parse(mot); //parse du mot de passe
+        
             MV_Recherche recherche = new MV_Recherche(boxName.Text);//recherche les données d'un pilot associé au nom donné en parametre
             MV_Pilot pilot = recherche.Pilot; //pilote associé au nom donne dans le textbox
             if (pilot.Pilot.ID==0 && pilot.Pilot.Name=="")

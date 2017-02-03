@@ -13,6 +13,7 @@
         <Button x:Name="button2" Foreground ="White" Background="Transparent" Content="Add Pilot" HorizontalAlignment="Left" Margin="70,150,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click2"/>
         <Button x:Name="button3" Foreground ="White" Background="Transparent" Content="Add Hangar" HorizontalAlignment="Left" Margin="70,200,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click3"/>
         <Button x:Name="button4" Foreground ="White" Background="Transparent" Content="Login" HorizontalAlignment="Left" Margin="70,250,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click4"/>
+        <Button x:Name="button5" Foreground ="White" Background="Transparent" Content="Parking" HorizontalAlignment="Left" Margin="70,300,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="button_Click5"/>
 
     </Grid>
 </Window>

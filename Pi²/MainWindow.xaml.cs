@@ -55,5 +55,11 @@ namespace Pi_
 
             Hangar.ShowDialog();
         }
+        private void button_Click5(object sender, RoutedEventArgs e)
+        {
+            Parking_window Hangar = new Parking_window();
+
+            Hangar.ShowDialog();
+        }
     }
 }

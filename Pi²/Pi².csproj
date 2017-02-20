@@ -98,6 +98,10 @@
     <Compile Include="MapperOptimalEfficiency.cs" />
     <Compile Include="MapperOptimalEfficiency_Base.cs" />
     <Compile Include="MapperStats.cs" />
+    <Compile Include="M_Optimisation.cs" />
+    <Compile Include="Optimisation.xaml.cs">
+      <DependentUpon>Optimisation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parking_window.xaml.cs">
       <DependentUpon>Parking_window.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Optimisation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Park.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

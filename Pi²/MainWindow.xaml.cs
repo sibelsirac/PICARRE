@@ -51,15 +51,21 @@ namespace Pi_
         }
         private void button_Click4(object sender, RoutedEventArgs e)
         {
-            Connection Hangar = new Connection();
+            Connection con = new Connection();
 
-            Hangar.ShowDialog();
+            con.ShowDialog();
         }
         private void button_Click5(object sender, RoutedEventArgs e)
         {
-            Parking_window Hangar = new Parking_window();
+            Parking_window park = new Parking_window();
 
-            Hangar.ShowDialog();
+            park.ShowDialog();
+        }
+        private void button_Click6(object sender, RoutedEventArgs e)
+        {
+           Optimisation opt = new Optimisation();
+
+            opt.ShowDialog();
         }
     }
 }

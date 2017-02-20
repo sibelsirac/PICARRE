@@ -10,9 +10,15 @@ namespace bin_packing_a_etoile
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
-
+        public int Id { get; private set; }
         public ImageInfo(int width, int height)
         {
+            Width = width;
+            Height = height;
+        }
+        public ImageInfo(int id,int width, int height)
+        {
+            Id = id;
             Width = width;
             Height = height;
         }

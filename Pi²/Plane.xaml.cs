@@ -26,7 +26,7 @@ namespace Pi_
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
-            MV_Add ajout = new MV_Add(boxName.Text, boxPlane.Text, boxLong.Text, boxLarg.Text);
+            MV_Add ajout = new MV_Add(boxName.Text, boxPlane.Text, boxLong.Text, boxLarg.Text,textidhan.Text);
             ajout.Ajout();
         }
     }

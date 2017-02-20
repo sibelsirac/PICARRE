@@ -218,7 +218,7 @@ namespace Games.Pathfinding.AStar2DTest
             return booln;
         }
         public override void GetSuccessors(ArrayList ASuccessors)
-        {
+        {// espace
             int x = 3;
             int y = 3;
             ASuccessors.Clear();

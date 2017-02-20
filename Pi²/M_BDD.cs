@@ -111,20 +111,173 @@ namespace Pi_
             return plane;
 
         }
+        public M_Optimisation Recherche_Optimisation_plane(int id_plane)
+        {//recherche les données ad'un avion associé à son id donné en parametre
 
+            connection.Open();
 
-        public void Add_plane(string name, string plane, int length, int width)
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "select * from Optimisation where id=@ln"; 
+            command.Parameters.AddWithValue("@ln", id_plane);
+
+            MySqlDataReader reader1;
+            reader1 = command.ExecuteReader();
+            //parcours deux fois la ligne donc va au resultat de la deuxieme ligne de la colonne 0
+            /* exemple de manipulation du resultat */
+            int x = 0;
+            int y = 0;
+            while (reader1.Read())
+            {
+
+                x = reader1.GetInt32(0);
+               y = reader1.GetInt32(1);
+              
+            }
+            M_Optimisation plane = new M_Optimisation(id_plane,x,y);
+
+            connection.Close();
+            return plane;
+
+        }
+
+        public void Add_plane(string name, string plane, int length, int width,int id_hangar)
         {//insere un avion dans la table avion
             connection.Open();
          
-                string sql = "INSERT INTO plane(id,name,plane,length,width) VALUES('',@ln,@ln2,@ln3,@ln4)";
+                string sql = "INSERT INTO plane(id,name,plane,length,width,id_hangar) VALUES('',@ln,@ln2,@ln3,@ln4,@ln5)";
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 cmd.Parameters.AddWithValue("@ln", name);
                 cmd.Parameters.AddWithValue("@ln2", plane);
                 cmd.Parameters.AddWithValue("@ln3", length);
                 cmd.Parameters.AddWithValue("@ln4", width);
-             
-                cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@ln5", id_hangar);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+     public   int[,] tableau_avion(int id_hangar)
+        {
+            int x=0;
+            connection.Open();
+
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "select id, width, length from plane where id_hangar=@ln";
+            command.Parameters.AddWithValue("@ln", id_hangar);
+
+            MySqlDataReader reader1;
+            reader1 = command.ExecuteReader();
+            //parcours deux fois la ligne donc va au resultat de la deuxieme ligne de la colonne 0
+            /* exemple de manipulation du resultat */
+         
+            while (reader1.Read())
+            {
+               x++;
+            }
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand commandb = connection.CreateCommand();
+            commandb.CommandText = "select id, width, length from plane where id_hangar=@ln";
+            commandb.Parameters.AddWithValue("@ln", id_hangar);
+
+            int[,] tableau = new int[x, 3];
+            MySqlDataReader reader2 = commandb.ExecuteReader();
+           
+            int i = 0;
+            while (reader2.Read())
+            {
+                tableau[i, 0] =reader2.GetInt32(0);
+                tableau[i, 1] = reader2.GetInt32(1);
+                tableau[i, 2] = reader2.GetInt32(2);
+                i++;
+            }
+
+
+            return tableau;
+        }
+        public void Add_optimisation(int[,] tableau , int id_hangar )
+        {//
+            connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "select * from optimisation where id_hangar=@ln";
+            command.Parameters.AddWithValue("@ln", id_hangar);
+
+            MySqlDataReader reader1;
+            reader1 = command.ExecuteReader();
+   
+            
+            //rechercher l'id si il existe 
+            if (reader1==null) {
+                connection.Close();
+               // connection.Open();
+               // string sql = "";
+              //  MySqlCommand cmd = new MySqlCommand(sql, connection);
+                // si il existe le modifier
+                for (int i = 0; i < tableau.GetLength(0); i++)
+                {
+                  //  MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    int id_plane = tableau[i, 0];
+                    int x = tableau[i, 1];
+                    int y = tableau[i, 2];
+                    Update_Plane_Opti(id_hangar, id_plane, x, y);
+                   /* sql = "UPDATE Optimisation SET tableau=@ln2 WHERE id_hangar=@ln";
+                    command.Parameters.AddWithValue("@ln", id_hangar);
+                    cmd.Parameters.AddWithValue("@ln2", id_plane);
+                    cmd.Parameters.AddWithValue("@ln3", x);
+                    cmd.Parameters.AddWithValue("@ln4", y);
+                    cmd.ExecuteNonQuery();*/
+                }
+            }
+            else
+            {
+                connection.Close();
+              
+               // string sql = "";
+              //  MySqlCommand cmd = new MySqlCommand(sql, connection);
+                // si il n'existe pas le créer
+                for (int i = 0; i < tableau.GetLength(0); i++)
+                {
+                    int id_plane = tableau[i, 0];
+                    int x = tableau[i, 1];
+                    int y = tableau[i, 2];
+                    Add_Plane_Opti(id_hangar, id_plane, x, y);
+             /*       sql = "INSERT INTO Optimisation(id_hangar,id_plane,x,y) VALUES(@ln,@ln2,@ln3,@ln4)";
+                    cmd.Parameters.AddWithValue("@ln2", id_plane);
+                    cmd.Parameters.AddWithValue("@ln3", x);
+                    cmd.Parameters.AddWithValue("@ln4", y);
+                    cmd.ExecuteNonQuery();*/
+                }
+            }
+
+
+          
+    
+        }
+        public void Add_Plane_Opti(int id_hangar,int id_plane ,int x, int y)
+        {//insere un hangar dans la table hangar
+            connection.Open();
+
+            string sql = "INSERT INTO Optimisation(id_hangar,id_plane,x,y) VALUES(@ln,@ln2,@ln3,@ln4)";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@ln", id_hangar);
+            cmd.Parameters.AddWithValue("@ln2", id_plane);
+            cmd.Parameters.AddWithValue("@ln3", x);
+            cmd.Parameters.AddWithValue("@ln4", y);
+   
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void Update_Plane_Opti(int id_hangar, int id_plane, int x, int y)
+        {//insere un hangar dans la table hangar
+            connection.Open();
+
+            string sql = "UPDATE Optimisation SET id_plane=@ln2, x=@ln3, y=@ln4 WHERE id_hangar=@ln";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@ln", id_hangar);
+            cmd.Parameters.AddWithValue("@ln2", id_plane);
+            cmd.Parameters.AddWithValue("@ln3", x);
+            cmd.Parameters.AddWithValue("@ln4", y);
+
+            cmd.ExecuteNonQuery();
             connection.Close();
         }
         public void Add_Hangar(string name, string city, int length, int width)

@@ -25,7 +25,7 @@ namespace bin_packing_a_etoile
 
         public static Main_bin_packing mainb = new Main_bin_packing();
         int[,] Map = mainb.Transformed();
-       
+
         List<Coordonnee> listeb;
         AStarNode2D GoalNode;
         AStarNode2D StartNode;
@@ -39,12 +39,12 @@ namespace bin_packing_a_etoile
 
             Games.Pathfinding.AStar astar = new Games.Pathfinding.AStar();
 
-            this.GoalNode = new AStarNode2D(null, null, 0, 30, 2);
-            this.StartNode = new AStarNode2D(null, GoalNode, 0, 5, 15);
+            this.GoalNode = new AStarNode2D(null, null, 0, 31, 2);
+            this.StartNode = new AStarNode2D(null, GoalNode, 0, 2, 25);
             StartNode.GoalNode = GoalNode;
             astar.FindPath(StartNode, GoalNode);
 
-          List<Coordonnee> listeb=  PrintSolution(astar.Solution);
+            List<Coordonnee> listeb = PrintSolution(astar.Solution);
             this.listeb = listeb;
 
             Console.ReadLine();
@@ -85,14 +85,14 @@ namespace bin_packing_a_etoile
         }
         public int GetMap(int x, int y)
         {
-            if ((x < 0) || (x > Map.GetLength(0) ))
+            if ((x < 0) || (x > Map.GetLength(0)))
 
-            return (-1); 
+                return (-1);
             if ((y < 0) || (y > Map.GetLength(1)))
                 return (-1);
             return (Map[y, x]);
         }
-       
+
         /// <summary>
         /// Prints the solution
         /// </summary>
@@ -104,26 +104,28 @@ namespace bin_packing_a_etoile
             ConsoleManager.Show();
             for (int j = 0; j < Map.GetLength(0); j++)
             {
-                for (int i = 0; i <Map.GetLength(1); i++)
+                for (int i = 0; i < Map.GetLength(1); i++)
                 {
                     ConsoleManager.Show();
-        
+
                     bool solution = false;
                     foreach (AStarNode2D n in ASolution)
                     {
                         AStarNode2D tmp = new AStarNode2D(null, null, 0, i, j);
                         solution = n.IsSameState(tmp);
-                      
+
                         if (solution)
                             break;
                     }
-                    if (solution) {
+                    if (solution)
+                    {
                         ConsoleManager.Show();
                         Console.Write("o "); //montre le chemin
                         Coordonnee c = new Coordonnee(i, j);
                         liste.Add(c);
                     }
-                    else {
+                    else
+                    {
                         if (GetMap(i, j) == -1) // si le noeud est occupé  || arround_occupied(i, j, 5, 5))
                         {
                             ConsoleManager.Show();

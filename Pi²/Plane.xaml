@@ -17,7 +17,9 @@
         <TextBox x:Name="boxLarg" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="100,145,0,0"/>
         <TextBox x:Name="boxLong" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Margin="250,145,0,0"/>
         <TextBlock x:Name="textLargeur" HorizontalAlignment="Left" Margin="135,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Width" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textLongueur" HorizontalAlignment="Left" Margin="285,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Length" VerticalAlignment="Top"/>
+       <TextBlock x:Name="textLongueur" HorizontalAlignment="Left" Margin="285,125,0,0" TextWrapping="Wrap" Foreground="White" Text="Length" VerticalAlignment="Top"/>
+        <TextBlock x:Name="id_hangar" HorizontalAlignment="Left" Margin="135,186,0,0" TextWrapping="Wrap" Foreground="White" Text="id hangar" VerticalAlignment="Top"/>
+        <TextBox x:Name="textidhan" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100" Margin="100,207,0,0"/>
 
     </Grid>
 </Window>

@@ -8,6 +8,7 @@ namespace bin_packing_a_etoile
 {
     public interface IImageInfo
     {
+        int Id { get; }
         int Width { get; }
         int Height { get; }
     }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using bin_packing_a_etoile;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -194,59 +195,90 @@ namespace Pi_
 
             return tableau;
         }
-        public void Add_optimisation(int[,] tableau , int id_hangar )
-        {//
+        public List<IMappedImageInfo> Liste_avion(int id_hangar)
+        {
+            int x = 0;
+            ConsoleManager.Show();
+            Console.WriteLine("connection non open");
             connection.Open();
+            ConsoleManager.Show();
+            Console.WriteLine("connection open");
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "select * from optimisation where id_hangar=@ln";
+            command.CommandText = "select id, width, length from plane where id_hangar=@ln";
             command.Parameters.AddWithValue("@ln", id_hangar);
 
             MySqlDataReader reader1;
             reader1 = command.ExecuteReader();
-   
-            
-            //rechercher l'id si il existe 
-            if (reader1==null) {
-                connection.Close();
-               // connection.Open();
-               // string sql = "";
-              //  MySqlCommand cmd = new MySqlCommand(sql, connection);
-                // si il existe le modifier
-                for (int i = 0; i < tableau.GetLength(0); i++)
-                {
-                  //  MySqlCommand cmd = new MySqlCommand(sql, connection);
-                    int id_plane = tableau[i, 0];
-                    int x = tableau[i, 1];
-                    int y = tableau[i, 2];
-                    Update_Plane_Opti(id_hangar, id_plane, x, y);
-                   /* sql = "UPDATE Optimisation SET tableau=@ln2 WHERE id_hangar=@ln";
-                    command.Parameters.AddWithValue("@ln", id_hangar);
-                    cmd.Parameters.AddWithValue("@ln2", id_plane);
-                    cmd.Parameters.AddWithValue("@ln3", x);
-                    cmd.Parameters.AddWithValue("@ln4", y);
-                    cmd.ExecuteNonQuery();*/
-                }
-            }
-            else
+            ConsoleManager.Show();
+            Console.WriteLine("commande executé");
+            //parcours deux fois la ligne donc va au resultat de la deuxieme ligne de la colonne 0
+            /* exemple de manipulation du resultat */
+
+            while (reader1.Read())
             {
-                connection.Close();
-              
-               // string sql = "";
-              //  MySqlCommand cmd = new MySqlCommand(sql, connection);
-                // si il n'existe pas le créer
-                for (int i = 0; i < tableau.GetLength(0); i++)
+                x++;
+            }
+            ConsoleManager.Show();
+            Console.WriteLine(x);
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand commandb = connection.CreateCommand();
+            commandb.CommandText = "select id, width, length, x, y from plane INNER JOIN  optimisation ON plane.id=optimisation.id_plane where optimisation.id_hangar=@ln";
+            commandb.Parameters.AddWithValue("@ln", id_hangar);
+
+            List<IMappedImageInfo> liste=new List<IMappedImageInfo>();
+            MySqlDataReader reader2 = commandb.ExecuteReader();
+            int l = 0;
+            while (l!=x)
+            {
+                reader2.Read();
+                ImageInfo image = new ImageInfo(reader2.GetInt32(0), reader2.GetInt32(1), reader2.GetInt32(2));
+                MappedImageInfo maped = new MappedImageInfo(reader2.GetInt32(3), reader2.GetInt32(4), image);
+                liste.Add(maped);
+                ConsoleManager.Show();
+                Console.WriteLine(reader2.GetInt32(0));
+                l++;
+            }
+
+
+            return liste;
+        }
+        public void Add_optimisation(int[,] tableau , int id_hangar )
+        {//
+         /*  connection.Open();
+           MySqlCommand command = connection.CreateCommand();
+           command.CommandText = "select * from optimisation where id_hangar=@ln";
+           command.Parameters.AddWithValue("@ln", id_hangar);
+
+           MySqlDataReader reader1;
+           reader1 = command.ExecuteReader();
+
+
+           //rechercher l'id si il existe 
+
+
+               connection.Close();*/
+
+            // string sql = "";
+            //  MySqlCommand cmd = new MySqlCommand(sql, connection);
+            // si il n'existe pas le créer
+            Update_Plane_Opti(id_hangar);
+            for (int i = 0; i < tableau.GetLength(0); i++)
                 {
                     int id_plane = tableau[i, 0];
                     int x = tableau[i, 1];
                     int y = tableau[i, 2];
-                    Add_Plane_Opti(id_hangar, id_plane, x, y);
+                
+                //System.Threading.Thread.Sleep(5000);
+                Add_Plane_Opti(id_hangar, id_plane, x, y);
              /*       sql = "INSERT INTO Optimisation(id_hangar,id_plane,x,y) VALUES(@ln,@ln2,@ln3,@ln4)";
                     cmd.Parameters.AddWithValue("@ln2", id_plane);
                     cmd.Parameters.AddWithValue("@ln3", x);
                     cmd.Parameters.AddWithValue("@ln4", y);
                     cmd.ExecuteNonQuery();*/
                 }
-            }
+            
 
 
           
@@ -266,16 +298,14 @@ namespace Pi_
             cmd.ExecuteNonQuery();
             connection.Close();
         }
-        public void Update_Plane_Opti(int id_hangar, int id_plane, int x, int y)
+        public void Update_Plane_Opti(int id_hangar)
         {//insere un hangar dans la table hangar
             connection.Open();
 
-            string sql = "UPDATE Optimisation SET id_plane=@ln2, x=@ln3, y=@ln4 WHERE id_hangar=@ln";
+            string sql = "DELETE from  Optimisation  WHERE id_hangar=@ln";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("@ln", id_hangar);
-            cmd.Parameters.AddWithValue("@ln2", id_plane);
-            cmd.Parameters.AddWithValue("@ln3", x);
-            cmd.Parameters.AddWithValue("@ln4", y);
+  
 
             cmd.ExecuteNonQuery();
             connection.Close();

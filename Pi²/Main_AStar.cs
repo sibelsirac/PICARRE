@@ -24,7 +24,7 @@ namespace bin_packing_a_etoile
         };
 
         public static Main_bin_packing mainb = new Main_bin_packing();
-        int[,] Map = mainb.Transformed();
+        int[,] Map = mainb.Transformedbis(1);
 
         List<Coordonnee> listeb;
         AStarNode2D GoalNode;
@@ -39,8 +39,8 @@ namespace bin_packing_a_etoile
 
             Games.Pathfinding.AStar astar = new Games.Pathfinding.AStar();
 
-            this.GoalNode = new AStarNode2D(null, null, 0, 31, 2);
-            this.StartNode = new AStarNode2D(null, GoalNode, 0, 2, 25);
+            this.GoalNode = new AStarNode2D(Map,null, null, 0, 31, 2);
+            this.StartNode = new AStarNode2D(Map,null, GoalNode, 0, 2, 25);
             StartNode.GoalNode = GoalNode;
             astar.FindPath(StartNode, GoalNode);
 
@@ -111,7 +111,7 @@ namespace bin_packing_a_etoile
                     bool solution = false;
                     foreach (AStarNode2D n in ASolution)
                     {
-                        AStarNode2D tmp = new AStarNode2D(null, null, 0, i, j);
+                        AStarNode2D tmp = new AStarNode2D(Map,null, null, 0, i, j);
                         solution = n.IsSameState(tmp);
 
                         if (solution)

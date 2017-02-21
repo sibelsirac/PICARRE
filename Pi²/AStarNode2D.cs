@@ -10,13 +10,16 @@ namespace Games.Pathfinding.AStar2DTest
     /// <summary>
     /// A node class for doing pathfinding on a 2-dimensional map
     /// </summary>
+    ///
     public class AStarNode2D:AStarNode
     {
+
         #region Properties
 
         /// <summary>
         /// The X-coordinate of the node
         /// </summary>
+        int[,] Map;
         public int X
         {
             get
@@ -52,8 +55,9 @@ namespace Games.Pathfinding.AStar2DTest
         /// <param name="ACost">Accumulative cost</param>
         /// <param name="AX">X-coordinate</param>
         /// <param name="AY">Y-coordinate</param>
-        public AStarNode2D(AStarNode AParent, AStarNode AGoalNode, double ACost, int AX, int AY) : base(AParent, AGoalNode, ACost)
+        public AStarNode2D(int[,] Map,AStarNode AParent, AStarNode AGoalNode, double ACost, int AX, int AY) : base(AParent, AGoalNode, ACost)
         {
+            this.Map = Map;
             FX = AX;
             FY = AY;
         }
@@ -81,7 +85,7 @@ namespace Games.Pathfinding.AStar2DTest
             {
                 return;
             }
-            AStarNode2D NewNode = new AStarNode2D(this, GoalNode, Cost + CurrentCost, AX, AY);
+            AStarNode2D NewNode = new AStarNode2D(Map,this, GoalNode, Cost + CurrentCost, AX, AY);
             if (NewNode.IsSameState(Parent))
             {
                 return;
@@ -111,6 +115,8 @@ namespace Games.Pathfinding.AStar2DTest
         /// <summary>
         /// Calculates the estimated cost for the remaining trip to the goal.
         /// </summary>
+        public static Main_bin_packing mainb = new Main_bin_packing();
+      //  int[,] Map = mainb.Transformed();
         public override void Calculate()
         {
             if (GoalNode != null)
@@ -144,8 +150,7 @@ namespace Games.Pathfinding.AStar2DTest
                 return (-1);
             return (Map[y, x]);
         }
-        public static Main_bin_packing mainb = new Main_bin_packing();
-        int[,] Map = mainb.Transformed();
+       
         public bool arround_occupied(int x, int y, int width, int height)
         {
             bool booln = false;
@@ -275,7 +280,7 @@ namespace Games.Pathfinding.AStar2DTest
     {
         #region Test Maps
         public static Main_bin_packing mainb = new Main_bin_packing();
-      static  int[,] Map = mainb.Transformed();
+      static  int[,] Map = mainb.Transformedbis(1);
 
         static int[,] Mapb = {
             { 1,-1, 1, 1, 1,-1, 1, 1, 1, 1 },
@@ -353,7 +358,7 @@ namespace Games.Pathfinding.AStar2DTest
                     bool solution = false;
                     foreach (AStarNode2D n in ASolution)
                     {
-                        AStarNode2D tmp = new AStarNode2D(null, null, 0, i, j);
+                        AStarNode2D tmp = new AStarNode2D(Map,null, null, 0, i, j);
                         solution = n.IsSameState(tmp);
                         if (solution)
                             break;

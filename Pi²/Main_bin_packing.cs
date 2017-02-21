@@ -179,6 +179,49 @@ namespace bin_packing_a_etoile
 
             return tableau;
         }
+        public int[,] Transformedbis(int id_hangar)
+        {
+            M_BDD based = new M_BDD();
+            List<IMappedImageInfo> liste = based.Liste_avion(id_hangar);
+            //int[] tab = size_tab();
+            int[] tab = { 40, 40 };
+
+            int[,] tableau = new int[40, 40];
+            ConsoleManager.Show();
+
+            for (int i = 0; i < tableau.GetLength(0); i++)
+            {
+                for (int j = 0; j < tableau.GetLength(1); j++)
+                {
+                    tableau[i, j] = 1;
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    tableau[i, j] = -1;
+                }
+            }
+
+            foreach (IMappedImageInfo e in liste)
+            {
+                ConsoleManager.Show();
+                Console.WriteLine(e.ImageInfo.Height);
+                for (int y = 0; y < e.ImageInfo.Height; y++)
+                {
+                    for (int x = 0; x < e.ImageInfo.Width; x++)
+                    {
+
+                        tableau[y + e.Y, x + e.X] = -1;
+                        ////probleme d'inexation commen tretrouver l'indexe en fonction de la largeur de colomne et le reste 
+                    }
+                }
+
+            }
+
+            return tableau;
+        }
         public List<IMappedImageInfo> Map
         {
             get

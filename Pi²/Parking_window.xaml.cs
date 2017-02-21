@@ -33,9 +33,10 @@ namespace Pi_
         public Parking_window ()
         {
             InitializeComponent();
-
-            Main_bin_packing mainb = new Main_bin_packing();
-            List<IMappedImageInfo> mapy = mainb.Map;
+            MV_Add ajout = new MV_Add("1");
+            List<IImageInfo> list = ajout.Recherche_avion();
+            Main_bin_packing main = new Main_bin_packing(list, 1);
+            List<IMappedImageInfo> mapy = main.Map;
             int i = 0;
 
             foreach (IMappedImageInfo m in mapy)
